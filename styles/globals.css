@@ -13,7 +13,14 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Whitney';
-    background-color: var(--color-bg);
+    background: linear-gradient(
+        180deg,
+        rgb(18, 24, 27) 60%,
+        rgb(38, 47, 68) 100%
+    );
+    background-attachment: fixed;
+    overscroll-behavior: none;
+
     color: var(--color-text);
     margin-top: 50px;
 }
@@ -40,7 +47,6 @@ main {
     font-weight: bold;
     border-bottom: 1px solid var(--color-gray);
     z-index: 99;
-    background-color: var(--color-navbar);
 }
 
 .navbar-right {
@@ -73,7 +79,7 @@ main {
 .button {
     border: none;
     cursor: pointer;
-    padding: 1em 2em;
+    padding: 0.5rem 1.25rem;
     border-radius: 0.5rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     color: var(--color-text);
@@ -82,13 +88,17 @@ main {
 }
 
 .navbar .button {
-    font-size: 1.25em;
+    font-size: 1em;
 }
 
 .btn-logo {
     background-color: #23272a;
     box-shadow: none;
     font-weight: 700;
+}
+
+.logo {
+    font-size: 1.75em;
 }
 
 .btn-blue {

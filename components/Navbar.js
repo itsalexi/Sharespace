@@ -8,15 +8,15 @@ export default function Navbar() {
     return (
         <nav className="navbar">
             <ul>
-                <Link href="/">
-                    <button className="button btn-logo">SHARESPACE</button>
-                </Link>
+                <Link href="/" className='logo'>SHARESPACE</Link>
 
                 {username && (
-                    <div className='navbar-right'>
+                    <div className="navbar-right">
                         <li>
                             <Link href="/manage">
-                                <button className="button btn-blue">Write Posts</button>
+                                <button className="button btn-blue">
+                                    Write Posts
+                                </button>
                             </Link>
                         </li>
                         <li>
