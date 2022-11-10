@@ -20,7 +20,6 @@ body {
     );
     background-attachment: fixed;
     overscroll-behavior: none;
-
     color: var(--color-text);
     margin-top: 50px;
 }
@@ -45,8 +44,8 @@ main {
     top: 0;
     color: var(--color-white);
     font-weight: bold;
-    border-bottom: 1px solid var(--color-gray);
     z-index: 99;
+    background-color: rgb(18, 24, 27);
 }
 
 .navbar-right {
