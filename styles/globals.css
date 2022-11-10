@@ -1,0 +1,138 @@
+:root {
+    --color-bg: #2c2e33;
+    --color-less-light-gray: #2f3136;
+    --color-lighter-gray: #36393f;
+    --color-gray: #232527;
+    --color-text: #c6d6db;
+    --color-navbar: #2f3136;
+    --color-cool-blue: #5865f2;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Whitney';
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin-top: 50px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    padding: 1rem 10vw;
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    padding: 1em 3vw;
+    top: 0;
+    color: var(--color-white);
+    font-weight: bold;
+    border-bottom: 1px solid var(--color-gray);
+    z-index: 99;
+    background-color: var(--color-navbar);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.navbar img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.navbar li {
+    border-radius: 50%;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    border: none;
+    cursor: pointer;
+    padding: 1em 2em;
+    border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: var(--color-text);
+    font-weight: bold;
+    outline: none;
+}
+
+.navbar .button {
+    font-size: 1.25em;
+}
+
+.btn-logo {
+    background-color: #23272a;
+    box-shadow: none;
+    font-weight: 700;
+}
+
+.btn-blue {
+    background-color: var(--color-cool-blue);
+}
+
+@media only screen and (max-width: 768px) {
+    button {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* fonts*/
+@font-face {
+    font-family: Whitney;
+    font-weight: 300;
+    src: url(https://cdn.jsdelivr.net/gh/ROMVoid95/DiscordFonts@master/Whitney/Whitney-300.woff)
+        format('woff');
+}
+
+@font-face {
+    font-family: Whitney;
+    font-weight: 400;
+    src: url(https://cdn.jsdelivr.net/gh/ROMVoid95/DiscordFonts@master/Whitney/Whitney-400.woff)
+        format('woff');
+}
+
+@font-face {
+    font-family: Whitney;
+    font-weight: 500;
+    src: url(https://cdn.jsdelivr.net/gh/ROMVoid95/DiscordFonts@master/Whitney/Whitney-500.woff)
+        format('woff');
+}
+
+@font-face {
+    font-family: Whitney;
+    font-weight: 600;
+    src: url(https://cdn.jsdelivr.net/gh/ROMVoid95/DiscordFonts@master/Whitney/Whitney-600.woff)
+        format('woff');
+}
+
+@font-face {
+    font-family: Whitney;
+    font-weight: 700;
+    src: url(https://cdn.jsdelivr.net/gh/ROMVoid95/DiscordFonts@master/Whitney/Whitney-700.woff)
+        format('woff');
+}
