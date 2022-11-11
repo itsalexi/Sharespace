@@ -74,8 +74,8 @@ function SignInButton() {
                 <Image width={32} height={32} src="/google.png" alt="google" />
                 Sign in with Google
             </button>
-            <button className="button btn-logobtn" onClick={signInAnonymously}>
-                <Image width={32} height={32} src="/google.png" alt="google" />
+            <button className="button btn-logobtn btn-anon" onClick={signInAnonymously}>
+                <Image width={32} height={32} src="/anon.png" alt="google" />
                 Sign in Anonymously
             </button>
         </div>

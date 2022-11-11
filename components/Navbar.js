@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { useContext } from 'react';
 import { UserContext } from '../lib/context';
+import { auth } from '../lib/firebase';
+
 
 export default function Navbar() {
     const { user, username } = useContext(UserContext);
@@ -24,11 +26,20 @@ export default function Navbar() {
                             </Link>
                         </li>
                         <li>
+                            <button
+                                className="button btn-grey"
+                                onClick={() => auth.signOut()}
+                            >
+                                Sign out
+                            </button>
+                        </li>
+                        <li>
                             <Link href={`/${username}`}>
                                 <Image
-                                    width={32}
-                                    height={32}
+                                    width={50}
+                                    height={50}
                                     src={user?.photoURL}
+                                    className="avatar"
                                     alt="photo"
                                 />
                             </Link>

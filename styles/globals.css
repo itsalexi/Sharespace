@@ -44,7 +44,7 @@ a {
 }
 
 main {
-    padding: 1rem 10vw;
+    padding: 1rem 5vw;
 }
 
 .enter-page {
@@ -63,11 +63,21 @@ main {
     color: black;
     font-weight: bold;
     margin-top: 1em;
-    transition: all 0.5s;
+    background: linear-gradient(
+        180deg,
+        rgb(255, 255, 255) 60%,
+        rgb(165, 192, 255) 100%
+    );
+}
+
+.error-page {
+    display: grid;
+    place-items: center;
+    gap: 1em;
 }
 
 .login-text {
-    font-weight: 300;
+    font-weight: 500;
     font-size: 0.75em;
     margin: 0;
     text-align: center;
@@ -99,10 +109,8 @@ main {
     gap: 1em;
 }
 
-.navbar img {
+.avatar {
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
     cursor: pointer;
 }
 
@@ -125,7 +133,7 @@ main {
     cursor: pointer;
     padding: 0.5rem 1.25rem;
     border-radius: 0.5rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     color: var(--color-text);
     font-weight: bold;
     outline: none;
@@ -145,10 +153,23 @@ main {
     font-size: 1.75em;
 }
 
+.homepage {
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+}
+
 .btn-blue {
     background-color: var(--color-cool-blue);
 }
 
+.btn-green {
+    background-color: rgb(32, 151, 32);
+}
+
+.btn-grey {
+    background-color: #36393f;
+}
 .username-form {
     margin-top: 10px;
 }
@@ -163,10 +184,15 @@ main {
     display: flex;
     align-items: center;
     gap: 1em;
-    padding: 0.5em 1em;
+    padding: 0.5em 3em;
     border: none;
     font-weight: bold;
     color: black;
+}
+
+.btn-anon {
+    background-color: #2f3136;
+    color: white;
 }
 
 .username {
@@ -185,9 +211,173 @@ main {
     gap: 1em;
 }
 
+.post {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    gap: 1em;
+}
+
+.create-post-div {
+    margin-top: 1em;
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.create-form h3 {
+    margin: 0;
+}
+
+.post-title-box {
+    background: none;
+    border: 1px solid white;
+    padding: 1em;
+    width: 100%;
+    border-radius: 1em;
+    color: white;
+}
+
+.divider {
+    width: 100%;
+    border-bottom: 1px solid white;
+    margin-bottom: 1em;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-post-content {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    gap: 2em;
+}
+
+.heart-section {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+    border: 1px solid white;
+    text-align: center;
+    width: 100%;
+    height: 0;
+    min-height: 150px;
+    padding: 1em;
+}
+
+.heart-button {
+    padding: 1em;
+    background-color: rgb(224, 59, 59);
+}
+
+.heart-section p {
+    width: 100%;
+    text-align: center;
+}
+
+.post-content {
+    padding: 1em;
+}
+
+.main-post-content section {
+    border: 1px solid white;
+    border-radius: 1em;
+}
+
+.post h1 {
+    margin: 0;
+}
+
+.post footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* controls */
+
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.controls textarea {
+    height: 50vh;
+    outline: none;
+    border: none;
+    padding: 0.5em;
+    font-size: 1.25rem;
+}
+
+.controls fieldset {
+    border: none;
+    font-size: 1.25em;
+    padding: 1em 0;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 1em;
+}
+
+.tools button {
+    width: 100%;
+}
+
+.manage-post {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: 4fr 1fr;
+}
+
+.manage-post h1,
+.post-title {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.post-author a {
+    color: var(--color-cool-blue);
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+    gap: 1em;
+}
+
+.user-profile p {
+    margin: 0;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 1.5em;
+}
 @media only screen and (max-width: 768px) {
     button {
         font-size: 0.8rem !important;
+    }
+
+    .main-post-content {
+        grid-template-columns: 1fr;
+    }
+
+    html {
+        font-size: 80%;
     }
 }
 
@@ -225,4 +415,8 @@ main {
     font-weight: 700;
     src: url(https://cdn.jsdelivr.net/gh/ROMVoid95/DiscordFonts@master/Whitney/Whitney-700.woff)
         format('woff');
+}
+
+.hidden {
+    display: none;
 }
