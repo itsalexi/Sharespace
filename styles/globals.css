@@ -221,6 +221,11 @@ main {
     gap: 1em;
 }
 
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
 .create-post-div {
     margin-top: 1em;
 }

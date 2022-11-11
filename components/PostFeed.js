@@ -3,32 +3,38 @@ import { formatRelative } from 'date-fns';
 import { capitalize } from '../lib/helper';
 
 export default function PostFeed({ posts, admin }) {
-    return posts
-        ? posts.map((post) => (
-              <PostItem post={post} key={post.slug} admin={admin} />
-          ))
-        : null;
+    return (
+        <div className="post-list">
+            {posts
+                ? posts.map((post) => (
+                      <PostItem post={post} key={post.slug} admin={admin} />
+                  ))
+                : null}
+        </div>
+    );
 }
 
 function PostItem({ post, admin = false }) {
     const wordCount = post?.content.trim().split(/\s+/g).length;
     const minutesToRead = (wordCount / 100 + 1).toFixed(0);
-
+    console.log(post);
     return (
         <div className="post">
             <div className="post-header">
                 <Link href={`/${post.username}`}>
                     @{post.username} •{' '}
-                    {post.createdAt.seconds
-                        ? capitalize(
-                              formatRelative(
-                                  post.createdAt.seconds * 1000,
-                                  Date.now()
+                    {post.createdAt
+                        ? post.createdAt.seconds
+                            ? capitalize(
+                                  formatRelative(
+                                      post.createdAt.seconds * 1000,
+                                      Date.now()
+                                  )
                               )
-                          )
-                        : capitalize(
-                              formatRelative(post.createdAt, Date.now())
-                          )}
+                            : capitalize(
+                                  formatRelative(post.createdAt, Date.now())
+                              )
+                        : null}
                 </Link>
                 {admin ? (
                     <Link href={`/manage/${post.slug}`}>
