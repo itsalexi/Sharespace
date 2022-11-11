@@ -10,7 +10,6 @@ export default function Custom404() {
                 width="480"
                 height="270"
                 frameBorder="0"
-                class="giphy-embed"
                 allowFullScreen
             ></iframe>
 
