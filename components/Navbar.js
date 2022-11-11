@@ -25,7 +25,12 @@ export default function Navbar() {
                         </li>
                         <li>
                             <Link href={`/${username}`}>
-                                <Image src={user?.photoURL} alt="photo" />
+                                <Image
+                                    width={32}
+                                    height={32}
+                                    src={user?.photoURL}
+                                    alt="photo"
+                                />
                             </Link>
                         </li>
                     </div>
@@ -34,7 +39,12 @@ export default function Navbar() {
                 {!username && (
                     <li>
                         <Link href="/enter">
-                            <button className="button btn-blue">LOG IN</button>
+                            <button
+                                className="button btn-blue"
+                                onClick={() => console.log(user)}
+                            >
+                                LOG IN
+                            </button>
                         </Link>
                     </li>
                 )}
