@@ -17,7 +17,6 @@ export default function PostFeed({ posts, admin }) {
 function PostItem({ post, admin = false }) {
     const wordCount = post?.content.trim().split(/\s+/g).length;
     const minutesToRead = (wordCount / 100 + 1).toFixed(0);
-    console.log(post);
     return (
         <div className="post">
             <div className="post-header">

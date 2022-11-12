@@ -372,6 +372,43 @@ main {
     font-weight: bold;
     font-size: 1.5em;
 }
+
+.error-message {
+    color: crimson;
+    font-weight: bold;
+}
+
+.upload-snippet {
+    width: 20em;
+    padding: 1em;
+    overflow: scroll;
+}
+
+.image-uploader {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-progress{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1em;
+}
+
+label {
+    text-align: center;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+.auth-check {
+    padding: 0;
+}
+
 @media only screen and (max-width: 768px) {
     button {
         font-size: 0.8rem !important;
@@ -384,6 +421,16 @@ main {
     html {
         font-size: 80%;
     }
+
+    .manage-post {
+        display: block;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+
 }
 
 /* fonts*/

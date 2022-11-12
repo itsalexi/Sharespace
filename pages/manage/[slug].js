@@ -6,9 +6,11 @@ import { useRouter } from 'next/router';
 
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { useForm } from 'react-hook-form';
+
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
+import ImageUploader from '../../components/ImageUploader';
 
 export default function ManagePost(props) {
     return (
@@ -30,6 +32,14 @@ function PostManager() {
         .collection('posts')
         .doc(slug);
     const [post] = useDocumentData(postRef);
+
+    const deletePost = async () => {
+        if (confirm('Are you sure you want to delete this post?')) {
+            postRef.delete();
+            router.push('/');
+            toast.success('Succesfully deleted the post! (i think)');
+        }
+    };
 
     return (
         <main>
@@ -58,6 +68,14 @@ function PostManager() {
                                     Live View
                                 </button>
                             </Link>
+                            <button
+                                className="button btn-grey"
+                                onClick={deletePost}
+                            >
+                                Delete
+                            </button>
+
+                            <ImageUploader />
                         </div>
                     </aside>
                 </div>
@@ -67,10 +85,12 @@ function PostManager() {
 }
 
 function PostForm({ defaultValues, postRef, preview }) {
-    const { register, handleSubmit, reset, watch } = useForm({
+    const { register, handleSubmit, reset, watch, formState } = useForm({
         defaultValues,
         mode: 'onChange',
     });
+
+    const { isValid, isDirty } = formState;
 
     const updatePost = async ({ content, published }) => {
         await postRef.update({
@@ -91,7 +111,30 @@ function PostForm({ defaultValues, postRef, preview }) {
             )}
 
             <div className={preview ? 'hidden' : 'controls'}>
-                <textarea name="content" {...register('content')}></textarea>
+                <textarea
+                    name="content"
+                    {...register('content', {
+                        maxLength: {
+                            value: 20000,
+                            message: 'Content is too long',
+                        },
+                        minLength: {
+                            value: 10,
+                            message: 'Content is too short',
+                        },
+                        required: {
+                            value: true,
+                            message: 'Content is required',
+                        },
+                    })}
+                ></textarea>
+
+                {formState.errors.content && (
+                    <p className="error-message">
+                        {formState.errors.content.message}
+                    </p>
+                )}
+
                 <fieldset>
                     <input
                         type="checkbox"
@@ -101,7 +144,11 @@ function PostForm({ defaultValues, postRef, preview }) {
                     />
                     <label htmlFor="publisehd">Published</label>
                 </fieldset>
-                <button type="submit" className="button btn-green">
+                <button
+                    type="submit"
+                    className="button btn-green"
+                    disabled={!isDirty || !isValid}
+                >
                     Save Changes
                 </button>
             </div>

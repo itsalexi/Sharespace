@@ -2,7 +2,8 @@ import { firestore, getUserWithUsername, postToJSON } from '../../lib/firebase';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import PostContent from '../../components/PostContent';
 import Metatags from '../../components/Metatags';
-
+import AuthCheck from '../../components/AuthCheck';
+import HeartButton from '../../components/HeartButton';
 export async function getStaticProps({ params }) {
     const { username, slug } = params;
     const userDoc = await getUserWithUsername(username);
@@ -19,7 +20,7 @@ export async function getStaticProps({ params }) {
 
     return {
         props: { post, path },
-        revalidate: 5000,
+        revalidate: 100,
     };
 }
 
@@ -47,7 +48,7 @@ export default function Post(props) {
     const post = realtimePost || props.post;
 
     return (
-        <main className='main-post-content'>
+        <main className="main-post-content">
             <Metatags
                 title={post.title}
                 desc="This is a post made with Sharespace! Create your own posts today!"
@@ -56,9 +57,11 @@ export default function Post(props) {
                 <PostContent post={post} />
             </section>
 
-            <aside className='heart-section'>
+            <aside className="heart-section">
                 <p>{post.heartCount || 0} 💖</p>
-                <button className='button heart-button'>Heart</button>
+                <AuthCheck>
+                    <HeartButton postRef={postRef}></HeartButton>
+                </AuthCheck>
             </aside>
         </main>
     );
