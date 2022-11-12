@@ -8,7 +8,7 @@ import { firestore, postToJSON, fromMillis } from '../lib/firebase';
 import PostFeed from '../components/PostFeed';
 import { useState } from 'react';
 import Metatags from '../components/Metatags';
-const LIMIT = 1;
+const LIMIT = 5;
 
 export async function getServerSideProps(context) {
     const postsQuery = firestore
@@ -52,7 +52,7 @@ export default function Home(props) {
     };
 
     return (
-        <main className='homepage'>
+        <main className="homepage">
             <Metatags
                 title="Sharespace"
                 desc="A space to share your thoughts!"
@@ -60,7 +60,9 @@ export default function Home(props) {
             <PostFeed posts={posts} />
 
             {!loading && !postsEnd && (
-                <button className="button btn-grey" onClick={fetchPosts}>Load more!</button>
+                <button className="button btn-grey" onClick={fetchPosts}>
+                    Load more!
+                </button>
             )}
 
             <Loader show={loading} />
