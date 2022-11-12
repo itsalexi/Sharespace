@@ -290,12 +290,9 @@ main {
 }
 
 .post-content {
-    padding: 1em;
-}
-
-.main-post-content section {
     border: 1px solid white;
     border-radius: 1em;
+    padding: 1em;
 }
 
 .post h1 {
@@ -305,6 +302,49 @@ main {
 .post footer {
     display: flex;
     justify-content: space-between;
+}
+
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    border: 1px solid white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.comment-list h2 {
+    margin: 0;
+}
+
+.comment {
+    display: flex;
+    padding: 1em;
+    gap: 1em;
+}
+
+.comment-content {
+    border: 1px solid white;
+    padding: 1em;
+    border-radius: 1em;
+}
+.comment-author {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.comment-header {
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.comment-header p {
+    margin: 0;
+}
+
+.comment-avatar img {
+    border-radius: 50%;
 }
 
 /* controls */
@@ -389,7 +429,7 @@ main {
     flex-direction: column;
 }
 
-.image-progress{
+.image-progress {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -409,6 +449,27 @@ input[type='file'] {
     padding: 0;
 }
 
+.post-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-box {
+    outline: none;
+    border: none;
+    padding: 0.5em;
+    font-size: 1rem;
+    resize: none;
+    width: 100%;
+    border-radius: 0.5em;
+}
+
+.comment-form-section {
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    align-items: center;
+}
 @media only screen and (max-width: 768px) {
     button {
         font-size: 0.8rem !important;
@@ -426,11 +487,10 @@ input[type='file'] {
         display: block;
     }
 
-    img {
+    .post-content img {
         width: 80%;
         height: auto;
     }
-
 }
 
 /* fonts*/

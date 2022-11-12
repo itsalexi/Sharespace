@@ -4,6 +4,8 @@ import PostContent from '../../components/PostContent';
 import Metatags from '../../components/Metatags';
 import AuthCheck from '../../components/AuthCheck';
 import HeartButton from '../../components/HeartButton';
+import Comments from '../../components/Comments';
+
 export async function getStaticProps({ params }) {
     const { username, slug } = params;
     const userDoc = await getUserWithUsername(username);
@@ -59,8 +61,10 @@ export default function Post(props) {
                 title={post.title}
                 desc="This is a post made with Sharespace! Create your own posts today!"
             />
-            <section>
+            <section className='post-section'>
                 <PostContent post={post} />
+                <Comments postRef={postRef} />
+
             </section>
 
             <aside className="heart-section">

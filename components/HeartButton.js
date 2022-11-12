@@ -4,7 +4,6 @@ import { useDocument } from 'react-firebase-hooks/firestore';
 export default function HeartButton({ postRef }) {
     const heartRef = postRef.collection('hearts').doc(auth.currentUser?.uid);
     const [heartDoc] = useDocument(heartRef);
-    console.log(heartDoc?.exists());
     const addHeart = async () => {
         const uid = auth.currentUser.uid;
         const batch = firestore.batch();
@@ -24,11 +23,11 @@ export default function HeartButton({ postRef }) {
     };
 
     return heartDoc?.exists() ? (
-        <button class="button btn-blue" onClick={removeHeart}>
+        <button className="button btn-blue" onClick={removeHeart}>
             💔 Unheart
         </button>
     ) : (
-        <button class="button btn-blue" onClick={addHeart}>
+        <button className="button btn-blue" onClick={addHeart}>
             💖 Heart
         </button>
     );

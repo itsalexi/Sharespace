@@ -21,6 +21,7 @@
         "react-firebase-hooks": "^5.1.0",
         "react-hook-form": "^7.39.3",
         "react-hot-toast": "^2.4.0",
-        "react-markdown": "^8.0.3"
+        "react-markdown": "^8.0.3",
+        "react-textarea-autosize": "^8.4.0"
     }
 }
