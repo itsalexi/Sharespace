@@ -66,7 +66,6 @@ function CreateNewPost() {
             createdAt: serverTimestamp(),
             updatedAt: serverTimestamp(),
             heartCount: 0,
-            comments: [],
         };
 
         await ref.set(data);

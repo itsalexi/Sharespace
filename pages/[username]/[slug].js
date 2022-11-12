@@ -13,7 +13,13 @@ export async function getStaticProps({ params }) {
 
     if (userDoc) {
         const postRef = userDoc.ref.collection('posts').doc(slug);
-        post = postToJSON(await postRef.get());
+
+        const postData = await postRef.get();
+        if (!postData) {
+            post = null;
+        } else {
+            post = postToJSON(postData);
+        }
 
         path = postRef.path;
     }
