@@ -66,27 +66,44 @@ export default function Comments({ postRef }) {
 function CommentForm({ postRef }) {
     const [commentMessage, setCommentMessage] = useState('');
     const { username } = useContext(UserContext);
+
+    const sendComment = async (e) => {
+        e.preventDefault();
+        const comment = postRef.collection('comments').doc();
+        const batch = firestore.batch();
+        const data = {
+            createdAt: serverTimestamp(),
+            message: commentMessage,
+            name: username,
+            photoURL: auth.currentUser.photoURL,
+            uid: auth.currentUser.uid,
+        };
+        batch.set(comment, data);
+        setCommentMessage('');
+        await batch.commit();
+        toast.success('Comment posted!');
+    };
+
     const onEnterPress = async (e) => {
-        if (e.keyCode === 13 && e.shiftKey == false) {
-            console.log('submitted form!');
-            const comment = postRef.collection('comments').doc();
-            const batch = firestore.batch();
-            const data = {
-                createdAt: serverTimestamp(),
-                message: commentMessage,
-                name: username,
-                photoURL: auth.currentUser.photoURL,
-                uid: auth.currentUser.uid,
-            };
-            batch.set(comment, data);
-            setCommentMessage('');
-            await batch.commit();
-            toast.success('Comment posted!');
+        if (
+            e.keyCode === 13 &&
+            e.shiftKey == false &&
+            !onlySpaces(commentMessage)
+        ) {
+            await sendComment(e);
         }
     };
 
+    const onlySpaces = (str) => {
+        if (!str.replace(/\s+/g, '').length) {
+            toast.error('You are trying to post a comment without any content');
+            return true;
+        } else {
+            return false;
+        }
+    };
     return (
-        <form>
+        <form onSubmit={(e) => sendComment(e)}>
             <div className="comment-form-section">
                 <Image
                     src={auth?.currentUser?.photoURL}
@@ -101,7 +118,11 @@ function CommentForm({ postRef }) {
                     onChange={(e) => setCommentMessage(e.target.value)}
                     placeholder="Write a comment!"
                     onKeyDown={onEnterPress}
+                    required={true}
                 ></TextareaAutosize>
+                <button className="button btn-green" type="submit">
+                    Post
+                </button>
             </div>
         </form>
     );
